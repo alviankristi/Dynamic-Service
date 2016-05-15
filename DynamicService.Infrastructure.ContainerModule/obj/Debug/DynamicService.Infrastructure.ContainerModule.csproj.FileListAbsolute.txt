@@ -1,9 +1,9 @@
-D:\Geekseat\RnD\DynamicService\DynamicService.Infrastructure.ContainerModule\obj\Debug\DynamicService.Infrastructure.ContainerModule.csprojResolveAssemblyReference.cache
 D:\Geekseat\RnD\DynamicService\DynamicService.Infrastructure.ContainerModule\bin\Debug\DynamicService.Infrastructure.ContainerModule.dll
 D:\Geekseat\RnD\DynamicService\DynamicService.Infrastructure.ContainerModule\bin\Debug\DynamicService.Infrastructure.ContainerModule.pdb
 D:\Geekseat\RnD\DynamicService\DynamicService.Infrastructure.ContainerModule\bin\Debug\Autofac.dll
 D:\Geekseat\RnD\DynamicService\DynamicService.Infrastructure.ContainerModule\bin\Debug\DynamicService.ApplicationServices.dll
 D:\Geekseat\RnD\DynamicService\DynamicService.Infrastructure.ContainerModule\bin\Debug\DynamicService.ApplicationServices.pdb
 D:\Geekseat\RnD\DynamicService\DynamicService.Infrastructure.ContainerModule\bin\Debug\Autofac.xml
+D:\Geekseat\RnD\DynamicService\DynamicService.Infrastructure.ContainerModule\obj\Debug\DynamicService.Infrastructure.ContainerModule.csprojResolveAssemblyReference.cache
 D:\Geekseat\RnD\DynamicService\DynamicService.Infrastructure.ContainerModule\obj\Debug\DynamicService.Infrastructure.ContainerModule.dll
 D:\Geekseat\RnD\DynamicService\DynamicService.Infrastructure.ContainerModule\obj\Debug\DynamicService.Infrastructure.ContainerModule.pdb

@@ -1,4 +1,3 @@
-D:\Geekseat\RnD\DynamicService\DynamicService.ApplicationServices\obj\Debug\DynamicService.ApplicationServices.csprojResolveAssemblyReference.cache
 D:\Geekseat\RnD\DynamicService\DynamicService.ApplicationServices\bin\Debug\DynamicService.ApplicationServices.dll
 D:\Geekseat\RnD\DynamicService\DynamicService.ApplicationServices\bin\Debug\DynamicService.ApplicationServices.pdb
 D:\Geekseat\RnD\DynamicService\DynamicService.ApplicationServices\obj\Debug\DynamicService.ApplicationServices.dll

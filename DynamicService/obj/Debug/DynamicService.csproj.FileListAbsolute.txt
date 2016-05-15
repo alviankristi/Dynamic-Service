@@ -30,6 +30,8 @@ D:\Geekseat\RnD\DynamicService\DynamicService\bin\DynamicService.pdb
 D:\Geekseat\RnD\DynamicService\DynamicService\bin\Antlr3.Runtime.dll
 D:\Geekseat\RnD\DynamicService\DynamicService\bin\Autofac.dll
 D:\Geekseat\RnD\DynamicService\DynamicService\bin\Autofac.Integration.Mvc.dll
+D:\Geekseat\RnD\DynamicService\DynamicService\bin\DynamicService.ApplicationServices.dll
+D:\Geekseat\RnD\DynamicService\DynamicService\bin\DynamicService.Infrastructure.ContainerModule.dll
 D:\Geekseat\RnD\DynamicService\DynamicService\bin\EntityFramework.dll
 D:\Geekseat\RnD\DynamicService\DynamicService\bin\EntityFramework.SqlServer.dll
 D:\Geekseat\RnD\DynamicService\DynamicService\bin\Microsoft.AspNet.Identity.Core.dll
@@ -56,6 +58,8 @@ D:\Geekseat\RnD\DynamicService\DynamicService\bin\System.Web.WebPages.Deployment
 D:\Geekseat\RnD\DynamicService\DynamicService\bin\System.Web.WebPages.dll
 D:\Geekseat\RnD\DynamicService\DynamicService\bin\System.Web.WebPages.Razor.dll
 D:\Geekseat\RnD\DynamicService\DynamicService\bin\WebGrease.dll
+D:\Geekseat\RnD\DynamicService\DynamicService\bin\DynamicService.ApplicationServices.pdb
+D:\Geekseat\RnD\DynamicService\DynamicService\bin\DynamicService.Infrastructure.ContainerModule.pdb
 D:\Geekseat\RnD\DynamicService\DynamicService\bin\Antlr3.Runtime.pdb
 D:\Geekseat\RnD\DynamicService\DynamicService\bin\Autofac.xml
 D:\Geekseat\RnD\DynamicService\DynamicService\bin\Autofac.Integration.Mvc.xml
@@ -85,7 +89,3 @@ D:\Geekseat\RnD\DynamicService\DynamicService\bin\Microsoft.Owin.Security.Micros
 D:\Geekseat\RnD\DynamicService\DynamicService\obj\Debug\DynamicService.csprojResolveAssemblyReference.cache
 D:\Geekseat\RnD\DynamicService\DynamicService\obj\Debug\DynamicService.dll
 D:\Geekseat\RnD\DynamicService\DynamicService\obj\Debug\DynamicService.pdb
-D:\Geekseat\RnD\DynamicService\DynamicService\bin\DynamicService.Infrastructure.ContainerModule.dll
-D:\Geekseat\RnD\DynamicService\DynamicService\bin\DynamicService.ApplicationServices.dll
-D:\Geekseat\RnD\DynamicService\DynamicService\bin\DynamicService.Infrastructure.ContainerModule.pdb
-D:\Geekseat\RnD\DynamicService\DynamicService\bin\DynamicService.ApplicationServices.pdb

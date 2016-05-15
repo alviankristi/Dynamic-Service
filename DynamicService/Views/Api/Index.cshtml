@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/angular.min.js"></script>
+<div ng-app="app" ng-controller="testController as ctrl">
+    {{ctrl.message}}
+</div>
+<script>
+    angular.module('app', []).controller('testController', function ($http) {
+        var self = this;
+        self.message = 'hello';
+        var data = {
+            ServiceName: "DynamicService.ApplicationServices.IApplicationService",
+            MethodName: "Hello",
+            Id: "Application",
+            Parameter: { Name: "Test", Property1: "Property 1" }
+        };
+        $http({
+            method: 'POST',
+            url: '/DynamicService/Post/',
+            data: JSON.stringify(data),
+            contentType: "application/x-www-form-urlencoded",
+            dataType: 'json'
+        }).then(function successCallback(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+    });
+</script>

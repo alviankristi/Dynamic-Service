@@ -25,5 +25,15 @@ namespace DynamicService.Dynamic
         {
             DynamicApiControllers.Add(serviceName, serviceInfo);
         }
+
+        public static Type GetService(string key)
+        {
+            var obj = DynamicApiControllers.FirstOrDefault(a => a.Key.Equals(key));
+            if (obj.Value == null)
+            {
+                throw new ApplicationException("The key is not found");
+            }
+            return obj.Value.ServiceType;
+        }
     }
 }

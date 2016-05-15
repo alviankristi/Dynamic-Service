@@ -1,8 +1,3 @@
-D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\DynamicService.Test.dll
-D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\DynamicService.Test.pdb
-D:\Geekseat\RnD\DynamicService\DynamicService.Test\obj\Debug\DynamicService.Test.csprojResolveAssemblyReference.cache
-D:\Geekseat\RnD\DynamicService\DynamicService.Test\obj\Debug\DynamicService.Test.dll
-D:\Geekseat\RnD\DynamicService\DynamicService.Test\obj\Debug\DynamicService.Test.pdb
 D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\roslyn\csc.exe
 D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\roslyn\csc.exe.config
 D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\roslyn\csc.rsp
@@ -29,6 +24,9 @@ D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\roslyn\vbc.exe.conf
 D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\roslyn\vbc.rsp
 D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\roslyn\VBCSCompiler.exe
 D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\roslyn\VBCSCompiler.exe.config
+D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\DynamicService.Test.dll.config
+D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\DynamicService.Test.dll
+D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\DynamicService.Test.pdb
 D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\DynamicService.ApplicationServices.dll
 D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\DynamicService.dll
 D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\Microsoft.Owin.dll
@@ -69,3 +67,6 @@ D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\System.Web.Razor.xm
 D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\System.Web.WebPages.Razor.xml
 D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\System.Web.WebPages.xml
 D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Geekseat\RnD\DynamicService\DynamicService.Test\obj\Debug\DynamicService.Test.csprojResolveAssemblyReference.cache
+D:\Geekseat\RnD\DynamicService\DynamicService.Test\obj\Debug\DynamicService.Test.dll
+D:\Geekseat\RnD\DynamicService\DynamicService.Test\obj\Debug\DynamicService.Test.pdb

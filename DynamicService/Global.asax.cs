@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using DynamicService.Controllers;
 
 namespace DynamicService
 {
@@ -17,6 +18,8 @@ namespace DynamicService
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ContainerConfig.RegisterContainer();
+            DynamicServiceConfig.Setup();
+            ModelBinders.Binders.Add(typeof(DynamicServiceModel), new DynamicServiceModelBinder());
         }
     }
 }
