@@ -1,4 +1,5 @@
-﻿using DynamicService.ApplicationServices.Models;
+﻿using System;
+using DynamicService.ApplicationServices.Models;
 
 namespace DynamicService.ApplicationServices
 {
@@ -12,6 +13,11 @@ namespace DynamicService.ApplicationServices
         public string NameAndNumber(string name, int number)
         {
             return name + " & " + number;
+        }
+
+        public string NameNumberAndDate(string name, int number, DateTime date)
+        {
+            return name + " & " + number + " & " + date;
         }
 
         public TestModel CreateTestModel(TestModel model)
