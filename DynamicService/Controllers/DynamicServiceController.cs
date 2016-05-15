@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Entity.Core.Metadata.Edm;
@@ -12,6 +13,7 @@ using Autofac;
 using DynamicService.ApplicationServices;
 using DynamicService.ApplicationServices.Models;
 using DynamicService.Dynamic;
+using Microsoft.CSharp;
 using Newtonsoft.Json.Linq;
 using IModelBinder = System.Web.Mvc.IModelBinder;
 using ModelBindingContext = System.Web.Mvc.ModelBindingContext;
@@ -51,14 +53,14 @@ namespace DynamicService.Controllers
                 if (parameters.Length == 0)
                 {
                     // This works fine
-                     result = methodInfo.Invoke(classInstance, null);
+                    result = methodInfo.Invoke(classInstance, null);
                 }
                 else
                 {
 
                     // The invoke does NOT work;
                     // it throws "Object does not match target type"             
-                     result = methodInfo.Invoke(classInstance, model.Parameter);
+                    result = methodInfo.Invoke(classInstance, model.Parameter);
                 }
             }
             return Json(result);
@@ -112,20 +114,27 @@ namespace DynamicService.Controllers
             foreach (var parameterInfo in parameters)
             {
                 var parameterType = parameterInfo.ParameterType;
-                object instance = Activator.CreateInstance(parameterType);
 
-
-
-                // Get a property on the type that is stored in the 
-                // property string
-                var props = parameterType.GetProperties().ToList();
-                foreach (var prop in props)
+                if (parameterInfo.ParameterType.GetConstructor(Type.EmptyTypes) == null)
                 {
-                    var attrName = $"Parameter.{prop.Name}";
-                    var value = incomingData.GetValue(attrName).RawValue;
-                    prop.SetValue(instance, Convert.ChangeType(value, prop.PropertyType), null);
+                    var attrName = $"Parameter.{parameterInfo.Name}";
+                    var value = incomingData.GetValue(attrName).RawValue.ToString();
+                    TypeConverter converter = TypeDescriptor.GetConverter(parameterType);
+                    object instance = converter.ConvertFromString(value);
+                    paramObj.Add(instance);
                 }
-                paramObj.Add(instance);
+                else
+                {
+                    object instance = Activator.CreateInstance(parameterType, true);
+                    var props = parameterType.GetProperties().ToList();
+                    foreach (var prop in props)
+                    {
+                        var attrName = $"Parameter.{prop.Name}";
+                        var value = incomingData.GetValue(attrName).RawValue;
+                        prop.SetValue(instance, Convert.ChangeType(value, prop.PropertyType), null);
+                    }
+                    paramObj.Add(instance);
+                }
             }
 
             return new DynamicServiceModel

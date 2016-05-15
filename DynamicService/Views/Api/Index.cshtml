@@ -10,12 +10,24 @@
     angular.module('app', []).controller('testController', function ($http) {
         var self = this;
         self.message = 'hello';
+        //var data = {
+        //    ServiceName: "DynamicService.ApplicationServices.IApplicationService",
+        //    MethodName: "CreateTestModel",
+        //    Id: "Application",
+        //    Parameter: { Name: "Test", Property1: "Property 1" }
+        //};
         var data = {
             ServiceName: "DynamicService.ApplicationServices.IApplicationService",
-            MethodName: "Hello",
+            MethodName: "NameAndNumber",
             Id: "Application",
-            Parameter: { Name: "Test", Property1: "Property 1" }
+            Parameter: { Name: "Test", Number: 2 }
         };
+        //var data = {
+        //    ServiceName: "DynamicService.ApplicationServices.IApplicationService",
+        //    MethodName: "Hello",
+        //    Id: "Application",
+        //    Parameter: { Name: "Test" }
+        //};
         $http({
             method: 'POST',
             url: '/DynamicService/Post/',

@@ -9,6 +9,11 @@ namespace DynamicService.ApplicationServices
             return "Hello " + name;
         }
 
+        public string NameAndNumber(string name, int number)
+        {
+            return name + " & " + number;
+        }
+
         public TestModel CreateTestModel(TestModel model)
         {
             return model;
