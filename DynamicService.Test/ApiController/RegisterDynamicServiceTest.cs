@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DynamicService.Test.ApiController
 {
     [TestClass]
-    public class RegisterDynamicService
+    public class RegisterDynamicServiceTest
     {
         [TestMethod]
         public void DynamicApiBuilderShouldHaveOneDynamicInfo()

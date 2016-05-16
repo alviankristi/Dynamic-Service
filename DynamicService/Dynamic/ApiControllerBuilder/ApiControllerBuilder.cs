@@ -21,7 +21,7 @@ namespace DynamicService.Dynamic.ApiControllerBuilder
 
         public void Build()
         {
-            DynamicApiBuilderManager.Register(_serviceName, new DynamicServiceInfo(typeof(T)));
+            DynamicApiBuilderManager.Register(_serviceName, new DynamicServiceInfo(typeof(T),_serviceName));
         }
     }
 }

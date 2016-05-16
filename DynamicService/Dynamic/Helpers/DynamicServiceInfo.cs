@@ -8,8 +8,10 @@ namespace DynamicService.Dynamic.Helpers
 {
     public class DynamicServiceInfo
     {
-        public DynamicServiceInfo(Type serviceType)
+        public DynamicServiceInfo(Type serviceType, string id)
         {
+            Id = id;
+            ServiceFullName = serviceType.FullName;
             ServiceName = serviceType.Name;
             ServiceType = serviceType;
             Methods = serviceType.GetMethods(bindingAttr: BindingFlags.Public | BindingFlags.Instance);
@@ -26,10 +28,11 @@ namespace DynamicService.Dynamic.Helpers
         }
 
         public string ServiceName { get; set; }
+        public string ServiceFullName { get; set; }
         public Type ServiceType { get; set; }
         public MethodInfo[] Methods { get; set; }
         public List<MethodService> MethodServices { get; set; }
-
+        public string Id { get; set; }
     }
 
     public class MethodService

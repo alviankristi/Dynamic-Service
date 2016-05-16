@@ -7,7 +7,28 @@
     {{ctrl.message}}
 </div>
 <script>
-    angular.module('app', []).controller('testController', function ($http) {
+    var module = angular.module('app', []);
+
+    module.service("applicationService",
+        function ($http) {
+            this.CreateTestModel = function (model) {
+                var data = {
+                    ServiceName: "DynamicService.ApplicationServices.IApplicationService",
+                    MethodName: "CreateTestModel",
+                    Id: "Application",
+                    Parameter: model
+                };
+                return $http({
+                    method: 'POST',
+                    url: '/DynamicService/Post/',
+                    data: JSON.stringify(data),
+                    contentType: "application/x-www-form-urlencoded",
+                    dataType: 'json'
+                });
+            }
+        });
+
+    module.controller('testController', function ($http, applicationService) {
         var self = this;
         self.message = 'hello';
         //var data = {
@@ -23,30 +44,34 @@
         //    Parameter: { Name: "Test", Number: 2 }
         //};
 
-        var data = {
-            ServiceName: "DynamicService.ApplicationServices.IApplicationService",
-            MethodName: "NameNumberAndDate",
-            Id: "Application",
-            Parameter: { Name: "Test", Number: 2 ,Date : new Date()}
-        };
+        //var data = {
+        //    ServiceName: "DynamicService.ApplicationServices.IApplicationService",
+        //    MethodName: "NameNumberAndDate",
+        //    Id: "Application",
+        //    Parameter: { Name: "Test", Number: 2, Date: new Date() }
+        //};
         //var data = {
         //    ServiceName: "DynamicService.ApplicationServices.IApplicationService",
         //    MethodName: "Hello",
         //    Id: "Application",
         //    Parameter: { Name: "Test" }
         //};
-        $http({
-            method: 'POST',
-            url: '/DynamicService/Post/',
-            data: JSON.stringify(data),
-            contentType: "application/x-www-form-urlencoded",
-            dataType: 'json'
-        }).then(function successCallback(response) {
-            // this callback will be called asynchronously
-            // when the response is available
-        }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-        });
+        //$http({
+        //    method: 'POST',
+        //    url: '/DynamicService/Post/',
+        //    data: JSON.stringify(data),
+        //    contentType: "application/x-www-form-urlencoded",
+        //    dataType: 'json'
+        //}).then(function successCallback(response) {
+        //    // this callback will be called asynchronously
+        //    // when the response is available
+        //}, function errorCallback(response) {
+        //    // called asynchronously if an error occurs
+        //    // or server returns response with an error status.
+        //});
+        applicationService.CreateTestModel({ Name: "Test", Property1: "Property 1" })
+            .then(function(data) {
+
+            });
     });
 </script>

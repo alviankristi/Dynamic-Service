@@ -52,7 +52,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ApiController\RegisterDynamicService.cs" />
+    <Compile Include="ApiController\AngularScriptGeneratorTest.cs" />
+    <Compile Include="ApiController\RegisterDynamicServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
