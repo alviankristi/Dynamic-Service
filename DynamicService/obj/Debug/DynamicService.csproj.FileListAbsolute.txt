@@ -89,3 +89,5 @@ D:\Geekseat\RnD\DynamicService\DynamicService\bin\Microsoft.Owin.Security.Micros
 D:\Geekseat\RnD\DynamicService\DynamicService\obj\Debug\DynamicService.csprojResolveAssemblyReference.cache
 D:\Geekseat\RnD\DynamicService\DynamicService\obj\Debug\DynamicService.dll
 D:\Geekseat\RnD\DynamicService\DynamicService\obj\Debug\DynamicService.pdb
+D:\Geekseat\RnD\DynamicService\DynamicService\bin\System.Net.Http.Formatting.dll
+D:\Geekseat\RnD\DynamicService\DynamicService\bin\System.Net.Http.Formatting.xml

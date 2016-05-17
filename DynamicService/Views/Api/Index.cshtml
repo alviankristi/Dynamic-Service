@@ -3,32 +3,34 @@
     ViewBag.Title = "Index";
 }
 <script src="~/Scripts/angular.min.js"></script>
+<script src="/api/getall"></script>
 <div ng-app="app" ng-controller="testController as ctrl">
     {{ctrl.message}}
 </div>
+
 <script>
-    var module = angular.module('app', []);
+    var module = angular.module('app', ['dynamicService']);
 
-    module.service("applicationService",
-        function ($http) {
-            this.CreateTestModel = function (model) {
-                var data = {
-                    ServiceName: "DynamicService.ApplicationServices.IApplicationService",
-                    MethodName: "CreateTestModel",
-                    Id: "Application",
-                    Parameter: model
-                };
-                return $http({
-                    method: 'POST',
-                    url: '/DynamicService/Post/',
-                    data: JSON.stringify(data),
-                    contentType: "application/x-www-form-urlencoded",
-                    dataType: 'json'
-                });
-            }
-        });
+    //module.service("applicationService",
+    //    function ($http) {
+    //        this.CreateTestModel = function (model) {
+    //            var data = {
+    //                ServiceName: "DynamicService.ApplicationServices.IApplicationService",
+    //                MethodName: "CreateTestModel",
+    //                Id: "Application",
+    //                Parameter: model
+    //            };
+    //            return $http({
+    //                method: 'POST',
+    //                url: '/DynamicService/Post/',
+    //                data: JSON.stringify(data),
+    //                contentType: "application/x-www-form-urlencoded",
+    //                dataType: 'json'
+    //            });
+    //        }
+    //    });
 
-    module.controller('testController', function ($http, applicationService) {
+    module.controller('testController', function ($http, IApplicationService) {
         var self = this;
         self.message = 'hello';
         //var data = {
@@ -69,9 +71,14 @@
         //    // called asynchronously if an error occurs
         //    // or server returns response with an error status.
         //});
-        applicationService.CreateTestModel({ Name: "Test", Property1: "Property 1" })
+        IApplicationService.CreateTestModel({ Name: "Test", Property1: "Property 1" })
             .then(function(data) {
+                console.log(data);
+            });
 
+        IApplicationService.Hello({ Name: "Test" })
+          .then(function (data) {
+                console.log(data);
             });
     });
 </script>

@@ -30,7 +30,7 @@ namespace DynamicService.Dynamic.JavascriptGenerator
             //    }
             //});
             var template = new StringBuilder();
-            template.AppendLine("var module = angular.module('app.dynamicService',[])");
+            template.AppendLine("var module = angular.module('dynamicService',[])");
             var services = DynamicApiBuilderManager.GetAll();
             foreach (var dynamicServiceInfo in services)
             {
@@ -43,14 +43,14 @@ namespace DynamicService.Dynamic.JavascriptGenerator
                     template.AppendFormat("\t \t \t \t  ServiceName: \"{0}\", \n", dynamicServiceInfo.ServiceFullName);
                     template.AppendFormat("\t \t \t \t  MethodName: \"{0}\", \n", method.Name);
                     template.AppendFormat("\t \t \t \t  Id: \"{0}\", \n", dynamicServiceInfo.Id);
-                    template.AppendFormat("\t \t \t \t  Parameter: \"{0}\", \n", SetData(method.Parameters.Any()));
+                    template.AppendFormat("\t \t \t \t  Parameter: {0}, \n", SetData(method.Parameters.Any()));
                     template.AppendLine("\t \t \t }");
                     template.AppendLine("\t \t \t return $http({");
-                    template.AppendLine("\t \t \t \t method:\"POST\"");
-                    template.AppendLine("\t \t \t \t url:\"/DynamicService/Post/\"");
-                    template.AppendLine("\t \t \t \t data: JSON.stringify(data)");
-                    template.AppendLine("\t \t \t \t contentType: \"application/x-www-form-urlencoded\"");
-                    template.AppendLine("\t \t \t \t dataType: \"json\"");
+                    template.AppendLine("\t \t \t \t method:\"POST\",");
+                    template.AppendLine("\t \t \t \t url:\"/DynamicService/Post/\",");
+                    template.AppendLine("\t \t \t \t data: JSON.stringify(data),");
+                    template.AppendLine("\t \t \t \t contentType: \"application/x-www-form-urlencoded\",");
+                    template.AppendLine("\t \t \t \t dataType: \"json\",");
                     template.AppendLine("\t \t \t });");
                     template.AppendLine("\t \t }");
                 });
