@@ -11,14 +11,10 @@ namespace DynamicService.Dynamic
     {
         public static class DynamicApiControllerBuilder
         {
-           
             public static IApiControllerBuilder<T> For<T>(string serviceName)
             {
                 return new ApiControllerBuilder<T>(serviceName);
             }
-
-
-          
         }
     }
 }

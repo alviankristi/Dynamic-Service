@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Web.UI.WebControls.WebParts;
 
 namespace DynamicService.Dynamic.Helpers
 {
@@ -15,7 +14,7 @@ namespace DynamicService.Dynamic.Helpers
             ServiceName = serviceType.Name;
             ServiceType = serviceType;
             Methods = serviceType.GetMethods(bindingAttr: BindingFlags.Public | BindingFlags.Instance);
-            MethodServices = Methods.Select(a => new MethodService()
+            MethodServices = Methods.Select(a => new MethodService
             {
                 Name = a.Name,
                 Parameters = a.GetParameters().Select(b => new ParameterMethod

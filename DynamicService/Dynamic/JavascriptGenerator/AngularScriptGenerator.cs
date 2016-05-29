@@ -8,37 +8,16 @@ namespace DynamicService.Dynamic.JavascriptGenerator
     {
         public string GenerateScript()
         {
-
-            //    var module = angular.module('app', []);
-
-            //    module.service("applicationService",
-            //        function($http) {
-            //        this.CreateTestModel = function(model) {
-            //            var data = {
-            //            ServiceName: "DynamicService.ApplicationServices.IApplicationService",
-            //            MethodName: "CreateTestModel",
-            //            Id: "Application",
-            //            Parameter: model
-            //           };
-            //        return $http({
-            //            method: 'POST',
-            //            url: '/DynamicService/Post/',
-            //            data: JSON.stringify(data),
-            //            contentType: "application/x-www-form-urlencoded",
-            //            dataType: 'json'
-            //        });
-            //    }
-            //});
             var template = new StringBuilder();
             template.AppendLine("var module = angular.module('dynamicService',[])");
             var services = DynamicApiBuilderManager.GetAll();
             foreach (var dynamicServiceInfo in services)
             {
-                template.AppendLine("module.service(\"" + dynamicServiceInfo.ServiceName + "\",");
+                template.AppendLine("module.service(\"" + ToCamelCase(dynamicServiceInfo.ServiceName.Substring(1))+ "\",");
                 template.AppendLine("\t function($http){");
                 dynamicServiceInfo.MethodServices.ForEach(method =>
                 {
-                    template.AppendFormat("\t \t this.{0}=function({1}){{ \n", method.Name, SetParamater(method.Parameters.Any()));
+                    template.AppendFormat("\t \t this.{0}=function({1}){{ \n", ToCamelCase(method.Name) , SetParamater(method.Parameters.Any()));
                     template.AppendLine("\t \t \t var data = {");
                     template.AppendFormat("\t \t \t \t  ServiceName: \"{0}\", \n", dynamicServiceInfo.ServiceFullName);
                     template.AppendFormat("\t \t \t \t  MethodName: \"{0}\", \n", method.Name);
@@ -69,7 +48,7 @@ namespace DynamicService.Dynamic.JavascriptGenerator
         {
             return anyParamters ? "model" : "{}";
         }
-        public static string ToPascalCase(string str)
+        public static string ToCamelCase( string str)
         {
             if (string.IsNullOrWhiteSpace(str))
             {
@@ -78,10 +57,10 @@ namespace DynamicService.Dynamic.JavascriptGenerator
 
             if (str.Length == 1)
             {
-                return str.ToUpper(CultureInfo.InvariantCulture);
+                return str.ToLower(CultureInfo.InvariantCulture);
             }
 
-            return char.ToUpper(str[0], CultureInfo.InvariantCulture) + str.Substring(1);
+            return char.ToLower(str[0], CultureInfo.InvariantCulture) + str.Substring(1);
         }
     }
 }

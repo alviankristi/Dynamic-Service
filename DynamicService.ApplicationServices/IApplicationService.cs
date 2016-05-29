@@ -6,5 +6,6 @@ namespace DynamicService.ApplicationServices
     {
         string Hello(string name);
         TestModel CreateTestModel(TestModel model);
+        void TestVoid(string name);
     }
 }

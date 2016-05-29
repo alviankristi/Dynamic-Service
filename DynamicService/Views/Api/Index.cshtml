@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
 }
 <script src="~/Scripts/angular.min.js"></script>
-<script src="/api/getall"></script>
+<script src="/dynamicService/getall"></script>
 <div ng-app="app" ng-controller="testController as ctrl">
     {{ctrl.message}}
 </div>
@@ -11,74 +11,18 @@
 <script>
     var module = angular.module('app', ['dynamicService']);
 
-    //module.service("applicationService",
-    //    function ($http) {
-    //        this.CreateTestModel = function (model) {
-    //            var data = {
-    //                ServiceName: "DynamicService.ApplicationServices.IApplicationService",
-    //                MethodName: "CreateTestModel",
-    //                Id: "Application",
-    //                Parameter: model
-    //            };
-    //            return $http({
-    //                method: 'POST',
-    //                url: '/DynamicService/Post/',
-    //                data: JSON.stringify(data),
-    //                contentType: "application/x-www-form-urlencoded",
-    //                dataType: 'json'
-    //            });
-    //        }
-    //    });
-
-    module.controller('testController', function ($http, IApplicationService) {
+    module.controller('testController', function ($http, applicationService) {
         var self = this;
         self.message = 'hello';
-        //var data = {
-        //    ServiceName: "DynamicService.ApplicationServices.IApplicationService",
-        //    MethodName: "CreateTestModel",
-        //    Id: "Application",
-        //    Parameter: { Name: "Test", Property1: "Property 1" }
-        //};
-        //var data = {
-        //    ServiceName: "DynamicService.ApplicationServices.IApplicationService",
-        //    MethodName: "NameAndNumber",
-        //    Id: "Application",
-        //    Parameter: { Name: "Test", Number: 2 }
-        //};
 
-        //var data = {
-        //    ServiceName: "DynamicService.ApplicationServices.IApplicationService",
-        //    MethodName: "NameNumberAndDate",
-        //    Id: "Application",
-        //    Parameter: { Name: "Test", Number: 2, Date: new Date() }
-        //};
-        //var data = {
-        //    ServiceName: "DynamicService.ApplicationServices.IApplicationService",
-        //    MethodName: "Hello",
-        //    Id: "Application",
-        //    Parameter: { Name: "Test" }
-        //};
-        //$http({
-        //    method: 'POST',
-        //    url: '/DynamicService/Post/',
-        //    data: JSON.stringify(data),
-        //    contentType: "application/x-www-form-urlencoded",
-        //    dataType: 'json'
-        //}).then(function successCallback(response) {
-        //    // this callback will be called asynchronously
-        //    // when the response is available
-        //}, function errorCallback(response) {
-        //    // called asynchronously if an error occurs
-        //    // or server returns response with an error status.
-        //});
-        IApplicationService.CreateTestModel({ Name: "Test", Property1: "Property 1" })
-            .then(function(data) {
+        applicationService.testVoid({ Name: "Test" })
+            .then(function (data) {
                 console.log(data);
             });
 
-        IApplicationService.Hello({ Name: "Test" })
+        applicationService.hello({ Name: "Test" })
           .then(function (data) {
-                console.log(data);
-            });
+              console.log(data);
+          });
     });
 </script>

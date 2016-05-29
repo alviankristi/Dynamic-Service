@@ -1,44 +1,20 @@
 ﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data.Entity.Core.Metadata.Edm;
-using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Web;
-using System.Web.ModelBinding;
 using System.Web.Mvc;
 using Autofac;
-using DynamicService.ApplicationServices;
-using DynamicService.ApplicationServices.Models;
 using DynamicService.Dynamic;
-using Microsoft.CSharp;
-using Newtonsoft.Json.Linq;
-using IModelBinder = System.Web.Mvc.IModelBinder;
-using ModelBindingContext = System.Web.Mvc.ModelBindingContext;
+using DynamicService.Dynamic.JavascriptGenerator;
+using DynamicService.Dynamic.Models;
 
 
 namespace DynamicService.Controllers
 {
     public class DynamicServiceController : Controller
     {
-        // GET: DynamicService
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
         public ActionResult GetAll()
         {
-            return View();
+            var angular = new AngularScriptGenerator();
+            return JavaScript(angular.GenerateScript());
         }
-
-        public ActionResult Put()
-        {
-            return View();
-        }
-
 
         public ActionResult Post([ModelBinder(typeof(DynamicServiceModelBinder))] DynamicServiceModel model)
         {
@@ -47,110 +23,36 @@ namespace DynamicService.Controllers
             object result = null;
             if (methodInfo != null)
             {
-                ParameterInfo[] parameters = methodInfo.GetParameters();
-                object classInstance = Activator.CreateInstance(service, null);
+                var parameters = methodInfo.GetParameters();
+                var classInstance = Activator.CreateInstance(service, null);
 
-                if (parameters.Length == 0)
-                {
-                    // This works fine
-                    result = methodInfo.Invoke(classInstance, null);
-                }
-                else
-                {
-
-                    // The invoke does NOT work;
-                    // it throws "Object does not match target type"             
-                    result = methodInfo.Invoke(classInstance, model.Parameter);
-                }
+                result =
+                    SetReturnModel(methodInfo.Invoke(classInstance, parameters.Length == 0 ? null : model.Parameter));
             }
+            
             return Json(result);
         }
-        private object Invoke(Type type, string methodName, object[] parameter)
+
+        private DynamicResponseModel SetReturnModel(object returnInvoke)
         {
-            MethodInfo methodInfo = type?.GetMethod(methodName);
-
-            if (methodInfo != null)
+            try
             {
-                object result = null;
-                ParameterInfo[] parameters = methodInfo.GetParameters();
-                object classInstance = Activator.CreateInstance(type, null);
-
-                if (parameters.Length == 0)
+                return new DynamicResponseModel
                 {
-                    // This works fine
-                    return methodInfo.Invoke(classInstance, null);
-                }
-                else
-                {
-
-                    // The invoke does NOT work;
-                    // it throws "Object does not match target type"             
-                    return methodInfo.Invoke(methodInfo, parameter);
-                }
+                    IsError = false,
+                    ErrorMessage = null,
+                    ResponseObject = returnInvoke
+                };
             }
-            return null;
-        }
-
-    }
-
-    public class DynamicServiceModelBinder : IModelBinder
-    {
-        public bool BindModel(ModelBindingExecutionContext modelBindingExecutionContext, ModelBindingContext bindingContext)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-        public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
-        {
-            var incomingData = bindingContext.ValueProvider;
-
-            var id = incomingData.GetValue("Id").RawValue.ToString();
-            var methodName = incomingData.GetValue("MethodName").RawValue.ToString();
-            var service = ContainerConfig.Container.Resolve(DynamicApiBuilderManager.GetService(id));
-            var parameters = service.GetType().GetMethod(methodName).GetParameters();
-            var paramObj = new List<object>();
-            foreach (var parameterInfo in parameters)
+            catch (Exception ex)
             {
-                var parameterType = parameterInfo.ParameterType;
-
-                if (parameterInfo.ParameterType.GetConstructor(Type.EmptyTypes) == null)
+                return new DynamicResponseModel
                 {
-                    var attrName = $"Parameter.{parameterInfo.Name}";
-                    var value = incomingData.GetValue(attrName).RawValue.ToString();
-                    TypeConverter converter = TypeDescriptor.GetConverter(parameterType);
-                    object instance = converter.ConvertFromString(value);
-                    paramObj.Add(instance);
-                }
-                else
-                {
-                    object instance = Activator.CreateInstance(parameterType, true);
-                    var props = parameterType.GetProperties().ToList();
-                    foreach (var prop in props)
-                    {
-                        var attrName = $"Parameter.{prop.Name}";
-                        var value = incomingData.GetValue(attrName).RawValue;
-                        prop.SetValue(instance, Convert.ChangeType(value, prop.PropertyType), null);
-                    }
-                    paramObj.Add(instance);
-                }
+                    IsError = true,
+                    ErrorMessage = ex.Message,
+                    ResponseObject = null
+                };
             }
-
-            return new DynamicServiceModel
-            {
-                Id = id,
-                MethodName = methodName,
-                ServiceName = incomingData.GetValue("ServiceName").RawValue.ToString(),
-                Parameter = paramObj.ToArray()
-            };
         }
-    }
-    public class DynamicServiceModel
-    {
-        public string Id { get; set; }
-        public string ServiceName { get; set; }
-        public object[] Parameter { get; set; }
-        public string MethodName { get; set; }
     }
 }

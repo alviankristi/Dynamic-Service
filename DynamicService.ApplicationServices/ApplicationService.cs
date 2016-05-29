@@ -10,6 +10,11 @@ namespace DynamicService.ApplicationServices
             return "Hello " + name;
         }
 
+        public void TestVoid(string name)
+        {
+            Console.WriteLine("I'm void");
+        }
+
         public string NameAndNumber(string name, int number)
         {
             return name + " & " + number;

@@ -180,7 +180,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiController.cs" />
-    <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\DynamicServiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -191,7 +190,9 @@
     <Compile Include="Dynamic\DynamicApiBuilderManager.cs" />
     <Compile Include="Dynamic\DynamicApiBuilder.cs" />
     <Compile Include="Dynamic\Helpers\DynamicServiceInfo.cs" />
-    <Compile Include="Dynamic\Service.cs" />
+    <Compile Include="Dynamic\Models\DynamicResponseModel.cs" />
+    <Compile Include="Dynamic\Models\DynamicServiceModel.cs" />
+    <Compile Include="Dynamic\Models\DynamicServiceModelBinder.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

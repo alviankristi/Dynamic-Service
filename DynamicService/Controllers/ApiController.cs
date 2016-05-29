@@ -13,19 +13,9 @@ namespace DynamicService.Controllers
     public class ApiController : Controller
     {
         // GET: Api
-        public ActionResult GetAll()
-        {
-            IScriptGenerator angular = new AngularScriptGenerator();
-            return JavaScript(angular.GenerateScript());
-        }
-
-
-
         public ActionResult Index()
         {
             return View();
         }
     }
-
-   
 }

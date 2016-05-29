@@ -70,6 +70,3 @@ D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\System.Web.WebPages
 D:\Geekseat\RnD\DynamicService\DynamicService.Test\obj\Debug\DynamicService.Test.csprojResolveAssemblyReference.cache
 D:\Geekseat\RnD\DynamicService\DynamicService.Test\obj\Debug\DynamicService.Test.dll
 D:\Geekseat\RnD\DynamicService\DynamicService.Test\obj\Debug\DynamicService.Test.pdb
-D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\System.Net.Http.Formatting.dll
-D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\Newtonsoft.Json.dll
-D:\Geekseat\RnD\DynamicService\DynamicService.Test\bin\Debug\System.Net.Http.Formatting.xml
