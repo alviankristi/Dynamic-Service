@@ -48,6 +48,7 @@ namespace DynamicService.Dynamic.JavascriptGenerator
         {
             return anyParamters ? "model" : "{}";
         }
+
         public static string ToCamelCase( string str)
         {
             if (string.IsNullOrWhiteSpace(str))
